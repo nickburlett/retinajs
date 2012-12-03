@@ -25,7 +25,9 @@
     var existing_onload = context.onload || new Function;
 
     context.onload = function() {
-      var images = document.getElementsByTagName("img"), retinaImages = [], i, image;
+      // var images = document.getElementsByTagName("img"), retinaImages = [], i, image;
+      // only get images that have been marked as having retina equivalents
+      var images = $('img[data-retina="true"]'), retinaImages = [], i, image;
       for (i = 0; i < images.length; i++) {
         image = images[i];
         retinaImages.push(new RetinaImage(image));
@@ -131,5 +133,5 @@
     Retina.init(root);
   }
 
-})();
+})($);
 
